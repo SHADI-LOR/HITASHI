@@ -7,13 +7,18 @@
 body {
     font-family: Arial, sans-serif;
     background-color: #f0f8ff; /* خلفية بيضاء مائلة للأزرق */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
 }
 
 header {
     background-color: #007acc; /* لون أزرق */
     color: white;
     text-align: center;
-    padding: 20px 0;
+    padding: 20px;
     position: fixed;
     top: 0;
     width: 100%;
@@ -27,7 +32,7 @@ header {
 }
 
 header h1 {
-    font-size: 2.5rem;
+    font-size: 2rem;
     letter-spacing: 2px;
     animation: fadeInDown 1s ease-in-out;
 }
@@ -49,18 +54,22 @@ main {
     justify-content: center;
     align-items: center;
     min-height: calc(100vh - 100px); /* تأخذ كامل الشاشة بعد الرأس */
+    padding: 20px;
 }
 
 .image-container {
     box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3); /* ظلال الصورة */
     border-radius: 15px; /* حواف دائرية للإطار */
     overflow: hidden;
-    max-width: 90%;
+    width: 100%;
+    max-width: 400px; /* الحد الأقصى لحجم الصورة */
     height: auto;
+    text-align: center;
 }
 
 .image-container img {
     width: 100%;
     height: auto;
     display: block;
+    border-radius: 15px;
 }
