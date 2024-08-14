@@ -7,52 +7,33 @@
 body {
     font-family: Arial, sans-serif;
     background-color: #f0f8ff; /* خلفية بيضاء مائلة للأزرق */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-}
-
-main {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-}
-
-.image-container {
-    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3); /* ظلال الصورة */
-    border-radius: 15px; /* حواف دائرية للإطار */
-    overflow: hidden;
-    width: 100%;
-    max-width: 300px; /* الحد الأقصى لحجم الصورة */
-    height: auto;
-    text-align: center;
-    margin-bottom: 10px; /* تقليل المسافة بين الصورة والعنوان */
-}
-
-.image-container img {
-    width: 100%;
-    height: auto;
-    display: block;
-    border-radius: 15px;
 }
 
 header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: #007acc; /* لون أزرق */
-    color: white;
-    text-align: center;
-    padding: 10px 0; /* تقليل المسافة العلوية والسفلية */
-    width: 100%;
-    max-width: 300px; /* توافق مع حجم الصورة */
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* ظلال الرأس */
     border-radius: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* ظلال العنوان */
+    margin: 20px auto;
+    max-width: 350px; /* تحديد عرض مناسب للمربع */
+}
+
+.header-container {
+    text-align: center;
+}
+
+.header-image {
+    width: 300px;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 10px; /* مسافة بسيطة بين الصورة والعنوان */
 }
 
 header h1 {
+    color: white;
     font-size: 1.8rem;
     letter-spacing: 1px;
-    margin: 0;
 }
