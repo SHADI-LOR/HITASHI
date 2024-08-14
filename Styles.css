@@ -22,11 +22,11 @@ header {
 }
 
 main {
-    margin-top: 100px; /* لترك مساحة للرأس الثابت */
+    margin-top: 100px; /* ترك مساحة للرأس الثابت */
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: calc(100vh - 100px); /* تأخذ كامل الشاشة بعد الرأس */
 }
 
 .image-container {
@@ -41,4 +41,4 @@ main {
     width: 100%;
     height: auto;
     display: block;
-  }
+}
