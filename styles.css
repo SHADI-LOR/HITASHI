@@ -7,33 +7,42 @@
 body {
     font-family: Arial, sans-serif;
     background-color: #f0f8ff; /* خلفية بيضاء مائلة للأزرق */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 header {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #007acc; /* لون أزرق */
+    background-color: white; /* لون المربع */
     padding: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* ظلال الرأس */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2), inset 0 1px 1px rgba(255, 255, 255, 0.5); /* ظل وإطار ثلاثي الأبعاد */
     border-radius: 15px;
-    margin: 20px auto;
-    max-width: 350px; /* تحديد عرض مناسب للمربع */
+    width: 100%;
+    max-width: 350px; /* عرض المربع */
+    margin-top: 20px;
+    border: 1px solid rgba(0, 0, 0, 0.1); /* إطار رفيع */
 }
 
 .header-container {
     text-align: center;
+    width: 100%;
 }
 
 .header-image {
-    width: 300px;
+    width: 100%;
+    max-width: 250px; /* حجم الصورة */
     height: auto;
     border-radius: 10px;
-    margin-bottom: 10px; /* مسافة بسيطة بين الصورة والعنوان */
+    margin-bottom: 10px; /* مسافة بين الصورة والعنوان */
 }
 
 header h1 {
-    color: white;
-    font-size: 1.8rem;
+    color: #007acc; /* لون العنوان */
+    font-size: 1.5rem;
     letter-spacing: 1px;
 }
