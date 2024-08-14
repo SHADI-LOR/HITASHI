@@ -1,0 +1,44 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f8ff; /* خلفية بيضاء مائلة للأزرق */
+}
+
+header {
+    background-color: #007acc; /* لون أزرق */
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* ظلال الرأس */
+    z-index: 1000;
+}
+
+main {
+    margin-top: 100px; /* لترك مساحة للرأس الثابت */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.image-container {
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3); /* ظلال الصورة */
+    border-radius: 15px; /* حواف دائرية للإطار */
+    overflow: hidden;
+    max-width: 90%;
+    height: auto;
+}
+
+.image-container img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
