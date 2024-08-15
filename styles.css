@@ -100,28 +100,28 @@ main {
 /* تنسيق المربعات الثلاثة */
 .bank-buttons {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     margin-top: 20px;
 }
 
 .bank-button {
     background-color: white;
-    padding: 20px;
-    width: 120px;
-    height: 120px;
+    padding: 10px;
+    width: 80px;
+    height: 80px;
     text-align: center;
     border-radius: 15px;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2), inset 0 1px 1px rgba(255, 255, 255, 0.5);
     border: 1px solid rgba(0, 0, 0, 0.1);
     color: #007acc;
     text-decoration: none;
-    font-size: 1rem;
+    font-size: 0.8rem;
     transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .bank-button i {
-    font-size: 2rem;
-    margin-bottom: 10px;
+    font-size: 1.5rem;
+    margin-bottom: 5px;
 }
 
 .bank-button:hover {
@@ -131,5 +131,5 @@ main {
 
 .bank-button p {
     margin: 0;
-    font-size: 1rem;
-}
+    font-size: 0.8rem;
+    }
