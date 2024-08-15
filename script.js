@@ -1,33 +1,33 @@
-let pinnedButtons = [];
+document.addEventListener("DOMContentLoaded", function () {
+    const pinnedBanksContainer = document.getElementById("pinned-banks");
+    const pinButtons = document.querySelectorAll(".pin-button");
 
-document.addEventListener('DOMContentLoaded', () => {
-    // استعادة الأزرار المثبتة من localStorage
-    const savedPins = JSON.parse(localStorage.getItem('pinnedButtons')) || [];
-
-    savedPins.forEach(savedPin => {
-        const bankButton = document.querySelector(`.bank-button p:contains('${savedPin}')`).parentElement;
-        if (pinnedButtons.length < 2) {
-            const clonedButton = bankButton.cloneNode(true);
-            clonedButton.querySelector('.pin-btn').style.display = 'none';
-            document.querySelector('.pin-buttons').appendChild(clonedButton);
-            pinnedButtons.push(bankButton);
-        }
+    // استعادة البنوك المثبتة من localStorage
+    const storedPinnedBanks = JSON.parse(localStorage.getItem("pinnedBanks")) || [];
+    storedPinnedBanks.forEach(bankName => {
+        const bankElement = createPinnedBankElement(bankName);
+        pinnedBanksContainer.appendChild(bankElement);
     });
-});
 
-function pinButton(buttonElement) {
-    const bankButton = buttonElement.parentElement;
-    const bankName = bankButton.querySelector('p').textContent;
+    // السماح بتثبيت بنكين كحد أقصى
+    pinButtons.forEach(button => {
+        button.addEventListener("click", function () {
+            const bankName = this.parentElement.getAttribute("data-bank");
 
-    if (pinnedButtons.length < 2 && !pinnedButtons.includes(bankButton)) {
-        const clonedButton = bankButton.cloneNode(true);
-        clonedButton.querySelector('.pin-btn').style.display = 'none';
-        document.querySelector('.pin-buttons').appendChild(clonedButton);
-        pinnedButtons.push(bankButton);
+            if (storedPinnedBanks.length < 2 && !storedPinnedBanks.includes(bankName)) {
+                storedPinnedBanks.push(bankName);
+                const bankElement = createPinnedBankElement(bankName);
+                pinnedBanksContainer.appendChild(bankElement);
+                localStorage.setItem("pinnedBanks", JSON.stringify(storedPinnedBanks));
+            }
+        });
+    });
 
-        // حفظ الأزرار المثبتة في localStorage
-        const savedPins = JSON.parse(localStorage.getItem('pinnedButtons')) || [];
-        savedPins.push(bankName);
-        localStorage.setItem('pinnedButtons', JSON.stringify(savedPins));
+    // إنشاء عنصر البنك المثبت
+    function createPinnedBankElement(bankName) {
+        const div = document.createElement("div");
+        div.classList.add("bank-button");
+        div.textContent = bankName;
+        return div;
     }
-              }
+});
