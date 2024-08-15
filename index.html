@@ -1,76 +1,37 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Banks and Unions</title>
+    <title>بنوك</title>
     <link rel="stylesheet" href="styles.css">
     <!-- رابط مكتبة Font Awesome لإضافة الأيقونات -->
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
-<body>
+<body dir="rtl">
     <header>
         <div class="header-container">
-            <h1>Banks and Unions</h1>
+            <h1>بنوك</h1>
         </div>
+        <div id="pinned-banks" class="pinned-banks-container"></div>
     </header>
 
-    <!-- زر التثبيت -->
-    <div class="pin-buttons"></div>
-
     <main>
-        <div class="search-section">
-            <h2>Search for Banks</h2>
-            <form class="search-form">
-                <input type="text" class="search-input" placeholder="Enter bank name">
-                <button type="submit" class="search-button">Search</button>
-            </form>
-        </div>
-
-        <!-- مربعات الأزرار الثلاثة للبنوك -->
         <div class="bank-buttons">
-            <div class="bank-button">
+            <div class="bank-button" data-bank="باليريون">
                 <i class="fas fa-university"></i>
-                <p>Ballerion</p>
-                <button class="pin-btn" onclick="pinButton(this)">📌</button>
+                <p>باليريون</p>
+                <button class="pin-button"><i class="fas fa-thumbtack"></i></button>
             </div>
-            <div class="bank-button">
+            <div class="bank-button" data-bank="سوينيوس">
                 <i class="fas fa-university"></i>
-                <p>Souenis</p>
-                <button class="pin-btn" onclick="pinButton(this)">📌</button>
+                <p>سوينيوس</p>
+                <button class="pin-button"><i class="fas fa-thumbtack"></i></button>
             </div>
-            <div class="bank-button">
+            <div class="bank-button" data-bank="أدلر">
                 <i class="fas fa-university"></i>
-                <p>Adler</p>
-                <button class="pin-btn" onclick="pinButton(this)">📌</button>
-            </div>
-        </div>
-
-        <!-- مربع البحث عن النقابات -->
-        <div class="search-section unions">
-            <h2>Search for Unions</h2>
-            <form class="search-form">
-                <input type="text" class="search-input" placeholder="Enter union name">
-                <button type="submit" class="search-button">Search</button>
-            </form>
-        </div>
-
-        <!-- مربعات الأزرار الثلاثة للنقابات -->
-        <div class="union-buttons">
-            <div class="union-button">
-                <i class="fas fa-people-arrows"></i>
-                <p>Union 1</p>
-                <button class="pin-btn" onclick="pinButton(this)">📌</button>
-            </div>
-            <div class="union-button">
-                <i class="fas fa-people-arrows"></i>
-                <p>Union 2</p>
-                <button class="pin-btn" onclick="pinButton(this)">📌</button>
-            </div>
-            <div class="union-button">
-                <i class="fas fa-people-arrows"></i>
-                <p>Union 3</p>
-                <button class="pin-btn" onclick="pinButton(this)">📌</button>
+                <p>أدلر</p>
+                <button class="pin-button"><i class="fas fa-thumbtack"></i></button>
             </div>
         </div>
     </main>
