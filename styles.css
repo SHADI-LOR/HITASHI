@@ -16,89 +16,36 @@ body {
 }
 
 header {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     background-color: white;
     padding: 20px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2), inset 0 1px 1px rgba(255, 255, 255, 0.5);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
     border-radius: 15px;
     width: 100%;
     max-width: 350px;
-    margin-bottom: 20px;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-}
-
-.header-container {
     text-align: center;
-    width: 100%;
-}
-
-.header-image {
-    width: 100%;
-    max-width: 250px;
-    height: auto;
-    border-radius: 10px;
     margin-bottom: 10px;
 }
 
-header h1 {
-    color: #007acc;
-    font-size: 1.5rem;
-    letter-spacing: 1px;
-}
-
-main {
-    width: 100%;
-    max-width: 400px;
-    margin-top: 30px;
-}
-
-.search-section {
-    background-color: white;
-    padding: 15px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2), inset 0 1px 1px rgba(255, 255, 255, 0.5);
-    border-radius: 15px;
-    margin-bottom: 20px;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    text-align: center;
-}
-
-.search-section h2 {
-    color: #007acc;
-    margin-bottom: 10px;
-}
-
-.search-form {
+.pin-buttons {
     display: flex;
     justify-content: center;
-    align-items: center;
+    margin-bottom: 20px;
+    gap: 10px;
 }
 
-.search-input {
-    width: 65%;
-    padding: 10px;
-    border-radius: 15px;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    margin-right: 5px;
-}
-
-.search-button {
-    padding: 10px 15px;
-    background-color: #007acc;
-    color: white;
+.pin-btn {
+    background-color: transparent;
     border: none;
-    border-radius: 15px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    font-size: 1.2rem;
     cursor: pointer;
+    margin-top: 10px;
+    transition: transform 0.2s;
 }
 
-.search-button:hover {
-    background-color: #005fa3;
+.pin-btn:hover {
+    transform: scale(1.2);
 }
 
-/* تنسيق المربعات الثلاثة */
 .bank-buttons {
     display: flex;
     justify-content: space-around;
@@ -109,16 +56,14 @@ main {
 .bank-button {
     background-color: white;
     padding: 10px;
-    width: 80px;
-    height: 80px;
+    width: 100px;
+    height: 100px;
     text-align: center;
     border-radius: 15px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2), inset 0 1px 1px rgba(255, 255, 255, 0.5);
-    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
     color: #007acc;
-    text-decoration: none;
-    font-size: 0.8rem;
-    transition: transform 0.2s, box-shadow 0.2s;
+    font-size: 0.9rem;
+    position: relative;
 }
 
 .bank-button i {
@@ -131,7 +76,15 @@ main {
     box-shadow: 0 15px 25px rgba(0, 0, 0, 0.3);
 }
 
-.bank-button p {
-    margin: 0;
+.pin-buttons .bank-button {
+    width: 80px;
+    height: 80px;
+}
+
+.pin-buttons .bank-button i {
+    font-size: 1.2rem;
+}
+
+.pin-buttons .bank-button p {
     font-size: 0.8rem;
 }
