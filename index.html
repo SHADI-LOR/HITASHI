@@ -1,64 +1,80 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hitachi Banks</title>
+    <title>Banks and Unions</title>
     <link rel="stylesheet" href="styles.css">
-    <!-- إضافة مكتبة FontAwesome للحصول على الأيقونات -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- رابط مكتبة Font Awesome لإضافة الأيقونات -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <!-- رأس الصفحة يحتوي على الصورة والعنوان -->
     <header>
         <div class="header-container">
-            <img src="https://i.ibb.co/Nr4Hk8q/98cc95b8102b05de6c4eed6f67d80f0c.jpg" alt="Hitachi Banks Image" class="header-image">
-            <h1>Hitachi Banks</h1>
+            <h1>Banks and Unions</h1>
         </div>
     </header>
 
-    <!-- مربع البحث عن النقابات -->
-    <main>
-        <section class="search-section">
-            <h2>بحث عن النقابات</h2>
-            <form action="#" method="GET" class="search-form">
-                <input type="text" placeholder="ابحث عن نقابة..." name="search" id="search-input" class="search-input">
-                <button type="submit" class="search-button">بحث</button>
-            </form>
-        </section>
+    <!-- زر التثبيت -->
+    <div class="pin-buttons"></div>
 
-        <!-- المربعات الثلاثة -->
-        <section class="bank-buttons">
-            <a href="Ballerion.html" class="bank-button">
+    <main>
+        <div class="search-section">
+            <h2>Search for Banks</h2>
+            <form class="search-form">
+                <input type="text" class="search-input" placeholder="Enter bank name">
+                <button type="submit" class="search-button">Search</button>
+            </form>
+        </div>
+
+        <!-- مربعات الأزرار الثلاثة للبنوك -->
+        <div class="bank-buttons">
+            <div class="bank-button">
                 <i class="fas fa-university"></i>
-                <p>باليريون</p>
-            </a>
-            <a href="Souenis.html" class="bank-button">
+                <p>Ballerion</p>
+                <button class="pin-btn" onclick="pinButton(this)">📌</button>
+            </div>
+            <div class="bank-button">
                 <i class="fas fa-university"></i>
-                <p>سوينيوس</p>
-            </a>
-            <a href="Adler.html" class="bank-button">
+                <p>Souenis</p>
+                <button class="pin-btn" onclick="pinButton(this)">📌</button>
+            </div>
+            <div class="bank-button">
                 <i class="fas fa-university"></i>
                 <p>Adler</p>
-            </a>
-        </section>
+                <button class="pin-btn" onclick="pinButton(this)">📌</button>
+            </div>
+        </div>
+
+        <!-- مربع البحث عن النقابات -->
+        <div class="search-section unions">
+            <h2>Search for Unions</h2>
+            <form class="search-form">
+                <input type="text" class="search-input" placeholder="Enter union name">
+                <button type="submit" class="search-button">Search</button>
+            </form>
+        </div>
+
+        <!-- مربعات الأزرار الثلاثة للنقابات -->
+        <div class="union-buttons">
+            <div class="union-button">
+                <i class="fas fa-people-arrows"></i>
+                <p>Union 1</p>
+                <button class="pin-btn" onclick="pinButton(this)">📌</button>
+            </div>
+            <div class="union-button">
+                <i class="fas fa-people-arrows"></i>
+                <p>Union 2</p>
+                <button class="pin-btn" onclick="pinButton(this)">📌</button>
+            </div>
+            <div class="union-button">
+                <i class="fas fa-people-arrows"></i>
+                <p>Union 3</p>
+                <button class="pin-btn" onclick="pinButton(this)">📌</button>
+            </div>
+        </div>
     </main>
 
-    <script>
-        document.querySelector('.search-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            let query = document.getElementById('search-input').value.toLowerCase();
-            let banks = {
-                'باليريون': 'Ballerion.html',
-                'سوينيوس': 'Souenis.html',
-                'adler': 'Adler.html'
-            };
-            if (banks[query]) {
-                window.location.href = banks[query];
-            } else {
-                alert('لم يتم العثور على البنك');
-            }
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
