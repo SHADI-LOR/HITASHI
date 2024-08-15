@@ -22,7 +22,7 @@
         <section class="search-section">
             <h2>بحث عن النقابات</h2>
             <form action="#" method="GET" class="search-form">
-                <input type="text" placeholder="ابحث عن نقابة..." name="search" class="search-input">
+                <input type="text" placeholder="ابحث عن نقابة..." name="search" id="search-input" class="search-input">
                 <button type="submit" class="search-button">بحث</button>
             </form>
         </section>
@@ -31,11 +31,11 @@
         <section class="bank-buttons">
             <a href="Ballerion.html" class="bank-button">
                 <i class="fas fa-university"></i>
-                <p>بنك باليريون</p>
+                <p>باليريون</p>
             </a>
             <a href="Souenis.html" class="bank-button">
                 <i class="fas fa-university"></i>
-                <p>بنك سوينيوس</p>
+                <p>سوينيوس</p>
             </a>
             <a href="Adler.html" class="bank-button">
                 <i class="fas fa-university"></i>
@@ -43,5 +43,22 @@
             </a>
         </section>
     </main>
+
+    <script>
+        document.querySelector('.search-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            let query = document.getElementById('search-input').value.toLowerCase();
+            let banks = {
+                'باليريون': 'Ballerion.html',
+                'سوينيوس': 'Souenis.html',
+                'adler': 'Adler.html'
+            };
+            if (banks[query]) {
+                window.location.href = banks[query];
+            } else {
+                alert('لم يتم العثور على البنك');
+            }
+        });
+    </script>
 </body>
-        </html>
+</html>
