@@ -46,3 +46,54 @@ header h1 {
     font-size: 1.5rem;
     letter-spacing: 1px;
 }
+
+main {
+    width: 100%;
+    max-width: 600px;
+    margin-top: 30px;
+}
+
+.search-section {
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2), inset 0 1px 1px rgba(255, 255, 255, 0.5); /* ظل وإطار ثلاثي الأبعاد */
+    border-radius: 15px;
+    width: 100%;
+    margin-top: 20px;
+    border: 1px solid rgba(0, 0, 0, 0.1); /* إطار رفيع */
+    text-align: center;
+}
+
+.search-section h2 {
+    color: #007acc;
+    margin-bottom: 15px;
+}
+
+.search-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.search-input {
+    width: 70%;
+    padding: 10px;
+    border-radius: 15px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-right: 10px;
+}
+
+.search-button {
+    padding: 10px 20px;
+    background-color: #007acc;
+    color: white;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+}
+
+.search-button:hover {
+    background-color: #005fa3;
+}
