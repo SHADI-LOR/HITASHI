@@ -64,8 +64,17 @@ function updateFavoritesDisplay(favoriteBanks) {
             favoriteBankElement.innerHTML = `
                 <i class="fas fa-university"></i>
                 <p>${bank.name}</p>
+                <button class="remove-favorite" data-id="${bank.id}">حذف</button>
             `;
             favoritesContainer.appendChild(favoriteBankElement);
+        });
+
+        // إضافة مستمعي الأحداث لأزرار الحذف
+        document.querySelectorAll('.remove-favorite').forEach(button => {
+            button.addEventListener('click', () => {
+                const bankId = button.getAttribute('data-id');
+                removeFromFavorites(bankId);
+            });
         });
     }
 }
