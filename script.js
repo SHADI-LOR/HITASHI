@@ -10,15 +10,15 @@ document.addEventListener('DOMContentLoaded', () => {
         const bankButton = document.querySelector(`.bank-button[data-bank="${bank}"]`);
         if (bankButton) {
             const clonedButton = bankButton.cloneNode(true);
-            clonedButton.classList.add('pinned-bank-button'); // تأكد من إضافة الكلاس المطلوب
-            clonedButton.querySelector('.pin-button').remove(); // إزالة زر التثبيت من النسخة المثبتة
+            clonedButton.classList.add('pinned-bank-button');
+            clonedButton.querySelector('.pin-button').remove();
             const deleteButton = document.createElement('button');
-            deleteButton.textContent = '❌'; // رمز إزالة
+            deleteButton.textContent = '❌';
             deleteButton.className = 'delete-button';
             clonedButton.appendChild(deleteButton);
-            clonedButton.setAttribute('data-bank', bank); // تأكيد اسم البنك المثبت
+            clonedButton.setAttribute('data-bank', bank);
             pinnedBanksContainer.appendChild(clonedButton);
-            bankButton.classList.add('pinned'); // إخفاء الزر الأصلي
+            bankButton.classList.add('pinned'); // إخفاء زر التثبيت فقط
         }
     });
 });
@@ -29,31 +29,29 @@ pinButtons.forEach(button => {
         const bankButton = button.closest('.bank-button');
         const bankName = bankButton.getAttribute('data-bank');
 
-        // التحقق من عدد الأزرار المثبتة
         if (pinnedBanksContainer.querySelectorAll('.pinned-bank-button').length >= maxPinnedBanks) {
             alert('يمكنك تثبيت حتى ثلاثة بنوك فقط.');
             return;
         }
 
-        // التحقق من عدم وجود زر مثبت بالفعل
+        // التحقق من عدم تثبيت نفس البنك مسبقاً
         if (!pinnedBanksContainer.querySelector(`.pinned-bank-button[data-bank="${bankName}"]`)) {
             const clonedButton = bankButton.cloneNode(true);
-            clonedButton.classList.add('pinned-bank-button'); // تأكد من إضافة الكلاس المطلوب
-            clonedButton.querySelector('.pin-button').remove(); // إزالة زر التثبيت من النسخة المثبتة
+            clonedButton.classList.add('pinned-bank-button');
+            clonedButton.querySelector('.pin-button').remove();
             const deleteButton = document.createElement('button');
-            deleteButton.textContent = '❌'; // رمز إزالة
+            deleteButton.textContent = '❌';
             deleteButton.className = 'delete-button';
             clonedButton.appendChild(deleteButton);
-            clonedButton.setAttribute('data-bank', bankName); // تأكيد اسم البنك المثبت
+            clonedButton.setAttribute('data-bank', bankName);
             pinnedBanksContainer.appendChild(clonedButton);
 
-            // تخزين البيانات في التخزين المحلي
             let pinnedBanks = JSON.parse(localStorage.getItem('pinnedBanks')) || [];
             pinnedBanks.push(bankName);
             localStorage.setItem('pinnedBanks', JSON.stringify(pinnedBanks));
 
-            // إخفاء الزر الأصلي
-            bankButton.classList.add('pinned');
+            // إخفاء زر التثبيت فقط
+            button.style.display = 'none'; // إخفاء زر التثبيت فقط
         }
     });
 });
@@ -64,10 +62,10 @@ pinnedBanksContainer.addEventListener('click', (event) => {
         const bankButton = event.target.closest('.pinned-bank-button');
         const bankName = bankButton.getAttribute('data-bank');
         
-        // إظهار الزر الأصلي
-        const originalButton = document.querySelector(`.bank-button[data-bank="${bankName}"]`);
-        if (originalButton) {
-            originalButton.classList.remove('pinned'); // إعادة إظهار الزر الأصلي
+        // إظهار زر التثبيت مرة أخرى
+        const originalPinButton = document.querySelector(`.bank-button[data-bank="${bankName}"] .pin-button`);
+        if (originalPinButton) {
+            originalPinButton.style.display = 'inline-block'; // إعادة إظهار زر التثبيت فقط
         }
 
         // حذف الزر المثبت
