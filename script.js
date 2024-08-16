@@ -10,8 +10,17 @@ document.addEventListener('DOMContentLoaded', function() {
             if (bankButton) {
                 const pinnedItem = bankButton.cloneNode(true);
                 pinnedItem.querySelector('.pin-button').remove(); // Remove the pin button from the pinned item
+                const deleteButton = document.createElement('button');
+                deleteButton.classList.add('delete-button');
+                deleteButton.innerHTML = '<i class="fas fa-times"></i>';
+                deleteButton.addEventListener('click', () => {
+                    pinnedItem.remove();
+                    bankButton.style.display = 'block';
+                    savePinnedItems(); // Save to localStorage
+                });
+                pinnedItem.appendChild(deleteButton);
                 pinnedBanksContainer.appendChild(pinnedItem);
-                bankButton.remove(); // Remove the button from the main list
+                bankButton.style.display = 'none'; // Hide the button from the main list
             }
         });
     }
@@ -35,8 +44,17 @@ document.addEventListener('DOMContentLoaded', function() {
             if (pinnedItems.length < 2) {
                 const pinnedItem = bankButton.cloneNode(true);
                 pinnedItem.querySelector('.pin-button').remove(); // Remove the pin button from the pinned item
+                const deleteButton = document.createElement('button');
+                deleteButton.classList.add('delete-button');
+                deleteButton.innerHTML = '<i class="fas fa-times"></i>';
+                deleteButton.addEventListener('click', () => {
+                    pinnedItem.remove();
+                    bankButton.style.display = 'block';
+                    savePinnedItems(); // Save to localStorage
+                });
+                pinnedItem.appendChild(deleteButton);
                 pinnedBanksContainer.appendChild(pinnedItem);
-                bankButton.remove(); // Remove the button from the main list
+                bankButton.style.display = 'none'; // Hide the button from the main list
                 savePinnedItems(); // Save to localStorage
             }
         });
