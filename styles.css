@@ -59,29 +59,29 @@ header {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
-    justify-content: space-between;
+    justify-content: center; /* تصحيح لتوزيع الأزرار بشكل جيد */
 }
 
 .bank-button {
     background-color: white;
-    padding: 10px;
-    width: 120px; /* جعل الأزرار مربعة */
-    height: 120px; /* جعل الأزرار مربعة */
+    padding: 5px;
+    width: 100px; /* تصغير الأزرار */
+    height: 100px; /* تصغير الأزرار */
     text-align: center;
     border-radius: 5px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* إطار 3D */
     color: #007acc;
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     position: relative;
-    border: 2px solid #007acc; /* حدود ثابتة */
+    border: 2px solid #ccc; /* إطار رمادي بسيط */
 }
 
 .icon-container {
-    margin-bottom: 10px;
+    margin-bottom: 5px;
 }
 
 .bank-icon {
-    font-size: 2rem;
+    font-size: 1.5rem; /* تصغير حجم الأيقونات */
 }
 
 .bank-name {
@@ -104,8 +104,8 @@ header {
     color: #007acc;
     font-size: 0.8rem;
     border-radius: 50%;
-    width: 30px;
-    height: 30px;
+    width: 24px; /* تصغير الزر */
+    height: 24px; /* تصغير الزر */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -116,12 +116,12 @@ header {
 }
 
 .pinned-banks-container .bank-button {
-    width: 120px;
-    height: 120px; /* جعل الأزرار مربعة */
+    width: 100px; /* تصغير الأزرار */
+    height: 100px; /* تصغير الأزرار */
 }
 
 .pinned-banks-container .pin-button {
-    display: none;
+    display: none; /* إخفاء زر التثبيت في الأزرار المثبتة */
 }
 
 .pinned-banks-container .delete-button {
