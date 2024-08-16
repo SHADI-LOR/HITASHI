@@ -33,9 +33,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function addToFavorites(bankId, bankName) {
     let favoriteBanks = JSON.parse(localStorage.getItem('favorites')) || [];
-    favoriteBanks.push({ id: bankId, name: bankName });
-    localStorage.setItem('favorites', JSON.stringify(favoriteBanks));
-    updateFavoritesDisplay(favoriteBanks);
+    if (!favoriteBanks.some(bank => bank.id === bankId)) {
+        if (favoriteBanks.length >= maxFavorites) {
+            alert('الحد الأقصى للمفضلات هو 2');
+            return;
+        }
+        favoriteBanks.push({ id: bankId, name: bankName });
+        localStorage.setItem('favorites', JSON.stringify(favoriteBanks));
+        updateFavoritesDisplay(favoriteBanks);
+    }
 }
 
 function removeFromFavorites(bankId) {
@@ -49,13 +55,17 @@ function updateFavoritesDisplay(favoriteBanks) {
     const favoritesContainer = document.getElementById('favorites-container');
     favoritesContainer.innerHTML = ''; // إفراغ المحتوى السابق
 
-    favoriteBanks.forEach(bank => {
-        const favoriteBankElement = document.createElement('div');
-        favoriteBankElement.classList.add('favorite-bank');
-        favoriteBankElement.innerHTML = `
-            <i class="fas fa-university"></i>
-            <p>${bank.name}</p>
-        `;
-        favoritesContainer.appendChild(favoriteBankElement);
-    });
+    if (favoriteBanks.length === 0) {
+        favoritesContainer.innerHTML = '<p>لا توجد بنوك مفضلة حالياً.</p>';
+    } else {
+        favoriteBanks.forEach(bank => {
+            const favoriteBankElement = document.createElement('div');
+            favoriteBankElement.classList.add('favorite-bank');
+            favoriteBankElement.innerHTML = `
+                <i class="fas fa-university"></i>
+                <p>${bank.name}</p>
+            `;
+            favoritesContainer.appendChild(favoriteBankElement);
+        });
+    }
 }
