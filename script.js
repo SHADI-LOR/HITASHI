@@ -12,12 +12,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const bankId = bankCard.dataset.id;
         const bankName = bankCard.querySelector('a').textContent;
 
-        // إذا كان البنك مفضلاً، تفعيل أيقونة القلب
         if (favoriteBanks.some(bank => bank.id === bankId)) {
             heart.classList.add('active');
         }
 
-        heart.addEventListener('click', () => {
+        heart.addEventListener('click', (event) => {
+            event.stopPropagation(); // Prevent the event from affecting the link
             if (heart.classList.contains('active')) {
                 heart.classList.remove('active');
                 removeFromFavorites(bankId);
@@ -53,7 +53,7 @@ function removeFromFavorites(bankId) {
 
 function updateFavoritesDisplay(favoriteBanks) {
     const favoritesContainer = document.getElementById('favorites-container');
-    favoritesContainer.innerHTML = ''; // إفراغ المحتوى السابق
+    favoritesContainer.innerHTML = '';
 
     if (favoriteBanks.length === 0) {
         favoritesContainer.innerHTML = '<p>لا توجد بنوك مفضلة حالياً.</p>';
@@ -63,13 +63,12 @@ function updateFavoritesDisplay(favoriteBanks) {
             favoriteBankElement.classList.add('favorite-bank');
             favoriteBankElement.innerHTML = `
                 <i class="fas fa-university"></i>
-                <p>${bank.name}</p>
+                <a href="${bank.link}">${bank.name}</a>
                 <button class="remove-favorite" data-id="${bank.id}">حذف</button>
             `;
             favoritesContainer.appendChild(favoriteBankElement);
         });
 
-        // إضافة مستمعي الأحداث لأزرار الحذف
         document.querySelectorAll('.remove-favorite').forEach(button => {
             button.addEventListener('click', () => {
                 const bankId = button.getAttribute('data-id');
