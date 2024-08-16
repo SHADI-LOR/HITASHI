@@ -1,6 +1,8 @@
 document.addEventListener("DOMContentLoaded", function () {
     const pinnedBanksContainer = document.getElementById("pinned-banks");
     const pinButtons = document.querySelectorAll(".pin-button");
+    const searchBox = document.getElementById("search-box");
+    const searchButton = document.getElementById("search-button");
 
     // استعادة البنوك المثبتة من localStorage
     const storedPinnedBanks = JSON.parse(localStorage.getItem("pinnedBanks")) || [];
@@ -30,4 +32,21 @@ document.addEventListener("DOMContentLoaded", function () {
         div.textContent = bankName;
         return div;
     }
+
+    // وظيفة البحث
+    searchButton.addEventListener("click", function () {
+        const query = searchBox.value.toLowerCase();
+        document.querySelectorAll(".bank-button").forEach(button => {
+            const bankName = button.getAttribute("data-bank").toLowerCase();
+            if (bankName.includes(query)) {
+                button.style.display = "";
+            } else {
+                button.style.display = "none";
+            }
+        });
+    });
+
+    searchBox.addEventListener("input", function () {
+        searchButton.click();
+    });
 });
