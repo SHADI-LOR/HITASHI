@@ -4,46 +4,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HITASHI BANK</title>
-    <!-- تضمين مكتبة Font Awesome للأيقونات -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
+    <!-- تضمين مكتبة الأيقونات Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-1xF1vF7W62waML2IFC4RF7V/JM39kS5Vq7Osq+JpjFvV5/zzVP5fI8Hw4d9p7Vj1xVR9NCUOEmfGvx7vjA7b6g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
     <header>
-        <div class="logo">
-            <h1>HITASHI BANK</h1>
-        </div>
+        <img src="https://i.ibb.co/Nr4Hk8q/98cc95b8102b05de6c4eed6f67d80f0c.jpg" alt="HITASHI BANK">
     </header>
+    <main>
+        <!-- قسم الأزرار للبنوك -->
+        <section id="bank-buttons">
+            <!-- بطاقة بنك باليريون -->
+            <div class="bank-card" data-id="1">
+                <i class="heart-icon fas fa-heart"></i>
+                <i class="fas fa-university"></i>
+                <a href="Ballerion.html">باليريون</a>
+            </div>
 
-    <!-- منطقة البنوك المفضلة -->
-    <section class="favorites-section">
-        <h2>البنوك المفضلة</h2>
-        <div id="favorites-container"></div>
-    </section>
+            <!-- بطاقة بنك سوينيوس -->
+            <div class="bank-card" data-id="2">
+                <i class="heart-icon fas fa-heart"></i>
+                <i class="fas fa-university"></i>
+                <a href="Souenis.html">سوينيوس</a>
+            </div>
 
-    <section class="content">
-        <!-- بطاقة بنك باليريون -->
-        <div class="bank-card" data-id="ballerion">
-            <i class="far fa-heart heart-icon"></i>
-            <i class="fas fa-university"></i>
-            <a href="Ballerion.html">باليريون</a>
-        </div>
+            <!-- بطاقة بنك أدلر -->
+            <div class="bank-card" data-id="3">
+                <i class="heart-icon fas fa-heart"></i>
+                <i class="fas fa-university"></i>
+                <a href="Adler.html">أدلر</a>
+            </div>
+        </section>
 
-        <!-- بطاقة بنك سوينيوس -->
-        <div class="bank-card" data-id="souenis">
-            <i class="far fa-heart heart-icon"></i>
-            <i class="fas fa-university"></i>
-            <a href="Souenis.html">سوينيوس</a>
-        </div>
-
-        <!-- بطاقة بنك أدلر -->
-        <div class="bank-card" data-id="adler">
-            <i class="far fa-heart heart-icon"></i>
-            <i class="fas fa-university"></i>
-            <a href="Adler.html">أدلر</a>
-        </div>
-    </section>
-
+        <!-- قسم قائمة المفضلات -->
+        <section id="favorites-container"></section>
+    </main>
     <script src="script.js"></script>
 </body>
 </html>
