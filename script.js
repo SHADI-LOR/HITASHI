@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         heart.addEventListener('click', (event) => {
-            event.stopPropagation(); // Prevent the event from affecting the link
+            event.stopPropagation(); // منع التأثير على الرابط
             if (heart.classList.contains('active')) {
                 heart.classList.remove('active');
                 removeFromFavorites(bankId);
@@ -33,12 +33,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function addToFavorites(bankId, bankName) {
     let favoriteBanks = JSON.parse(localStorage.getItem('favorites')) || [];
+    const bankLink = document.querySelector(`.bank-card[data-id="${bankId}"] a`).href;
     if (!favoriteBanks.some(bank => bank.id === bankId)) {
         if (favoriteBanks.length >= maxFavorites) {
             alert('الحد الأقصى للمفضلات هو 2');
             return;
         }
-        favoriteBanks.push({ id: bankId, name: bankName });
+        favoriteBanks.push({ id: bankId, name: bankName, link: bankLink });
         localStorage.setItem('favorites', JSON.stringify(favoriteBanks));
         updateFavoritesDisplay(favoriteBanks);
     }
@@ -64,16 +65,8 @@ function updateFavoritesDisplay(favoriteBanks) {
             favoriteBankElement.innerHTML = `
                 <i class="fas fa-university"></i>
                 <a href="${bank.link}">${bank.name}</a>
-                <button class="remove-favorite" data-id="${bank.id}">حذف</button>
             `;
             favoritesContainer.appendChild(favoriteBankElement);
-        });
-
-        document.querySelectorAll('.remove-favorite').forEach(button => {
-            button.addEventListener('click', () => {
-                const bankId = button.getAttribute('data-id');
-                removeFromFavorites(bankId);
-            });
         });
     }
 }
