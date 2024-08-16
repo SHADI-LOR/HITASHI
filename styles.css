@@ -76,7 +76,11 @@ header {
     margin: 10px 0;
 }
 
-.bank-button i {
+.icon-container {
+    margin: 10px auto;
+}
+
+.bank-icon {
     font-size: 2rem;
     display: block;
     margin: 0 auto;
