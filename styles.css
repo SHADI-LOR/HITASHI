@@ -33,6 +33,9 @@ main {
 /* قسم قائمة المفضلات */
 #favorites-container {
     margin-bottom: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 /* قسم أزرار البنوك */
@@ -52,6 +55,7 @@ main {
     border-radius: 8px;
     text-align: center;
     position: relative;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .bank-card i {
@@ -91,4 +95,5 @@ main {
     border: 1px solid #ddd;
     border-radius: 8px;
     text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
