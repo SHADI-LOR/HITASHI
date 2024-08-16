@@ -1,62 +1,60 @@
-document.addEventListener('DOMContentLoaded', function() {
-    const pinButtons = document.querySelectorAll('.pin-button');
+document.addEventListener('DOMContentLoaded', () => {
+    const pins = document.querySelectorAll('.pin-button');
     const pinnedBanksContainer = document.getElementById('pinned-banks');
 
-    // Load pinned items from localStorage
-    function loadPinnedItems() {
-        const pinnedItems = JSON.parse(localStorage.getItem('pinnedBanks')) || [];
-        pinnedItems.forEach(item => {
-            const bankButton = document.querySelector(`.bank-button[data-bank="${item}"]`);
-            if (bankButton) {
-                const pinnedItem = bankButton.cloneNode(true);
-                pinnedItem.querySelector('.pin-button').remove(); // Remove the pin button from the pinned item
+    pins.forEach(pin => {
+        pin.addEventListener('click', (event) => {
+            const bankButton = event.currentTarget.closest('.bank-button');
+            const bankName = bankButton.dataset.bank;
+
+            // تحقق من عدم تجاوز الحد الأقصى لعدد التثبيتات
+            if (pinnedBanksContainer.children.length < 2) {
+                const pinnedButton = bankButton.cloneNode(true);
+                pinnedButton.querySelector('.pin-button').remove();
+                pinnedButton.classList.add('pinned');
                 const deleteButton = document.createElement('button');
-                deleteButton.classList.add('delete-button');
+                deleteButton.className = 'delete-button';
                 deleteButton.innerHTML = '<i class="fas fa-times"></i>';
+                pinnedButton.appendChild(deleteButton);
+                pinnedBanksContainer.appendChild(pinnedButton);
+                
                 deleteButton.addEventListener('click', () => {
-                    pinnedItem.remove();
-                    bankButton.style.display = 'block';
-                    savePinnedItems(); // Save to localStorage
+                    pinnedBanksContainer.removeChild(pinnedButton);
                 });
-                pinnedItem.appendChild(deleteButton);
-                pinnedBanksContainer.appendChild(pinnedItem);
-                bankButton.style.display = 'none'; // Hide the button from the main list
+
+                // تخزين التثبيت في localStorage
+                let pinnedBanks = JSON.parse(localStorage.getItem('pinnedBanks')) || [];
+                if (!pinnedBanks.includes(bankName)) {
+                    pinnedBanks.push(bankName);
+                    localStorage.setItem('pinnedBanks', JSON.stringify(pinnedBanks));
+                }
+            } else {
+                alert('يمكنك تثبيت ما يصل إلى زرين فقط.');
             }
         });
-    }
+    });
 
-    // Save pinned items to localStorage
-    function savePinnedItems() {
-        const pinnedItems = Array.from(pinnedBanksContainer.querySelectorAll('.bank-button'))
-            .map(item => item.getAttribute('data-bank'));
-        localStorage.setItem('pinnedBanks', JSON.stringify(pinnedItems));
-    }
+    // تحميل التثبيتات المحفوظة عند تحميل الصفحة
+    const savedBanks = JSON.parse(localStorage.getItem('pinnedBanks')) || [];
+    savedBanks.forEach(bankName => {
+        const bankButton = Array.from(document.querySelectorAll('.bank-button')).find(button => button.dataset.bank === bankName);
+        if (bankButton) {
+            const pinnedButton = bankButton.cloneNode(true);
+            pinnedButton.querySelector('.pin-button').remove();
+            pinnedButton.classList.add('pinned');
+            const deleteButton = document.createElement('button');
+            deleteButton.className = 'delete-button';
+            deleteButton.innerHTML = '<i class="fas fa-times"></i>';
+            pinnedButton.appendChild(deleteButton);
+            pinnedBanksContainer.appendChild(pinnedButton);
 
-    // Initialize pinned items
-    loadPinnedItems();
-
-    pinButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            const bankButton = this.closest('.bank-button');
-            const bankName = bankButton.getAttribute('data-bank');
-            const pinnedItems = pinnedBanksContainer.querySelectorAll('.bank-button');
-
-            if (pinnedItems.length < 2) {
-                const pinnedItem = bankButton.cloneNode(true);
-                pinnedItem.querySelector('.pin-button').remove(); // Remove the pin button from the pinned item
-                const deleteButton = document.createElement('button');
-                deleteButton.classList.add('delete-button');
-                deleteButton.innerHTML = '<i class="fas fa-times"></i>';
-                deleteButton.addEventListener('click', () => {
-                    pinnedItem.remove();
-                    bankButton.style.display = 'block';
-                    savePinnedItems(); // Save to localStorage
-                });
-                pinnedItem.appendChild(deleteButton);
-                pinnedBanksContainer.appendChild(pinnedItem);
-                bankButton.style.display = 'none'; // Hide the button from the main list
-                savePinnedItems(); // Save to localStorage
-            }
-        });
+            deleteButton.addEventListener('click', () => {
+                pinnedBanksContainer.removeChild(pinnedButton);
+                // إزالة التثبيت من localStorage
+                let pinnedBanks = JSON.parse(localStorage.getItem('pinnedBanks')) || [];
+                pinnedBanks = pinnedBanks.filter(bank => bank !== bankName);
+                localStorage.setItem('pinnedBanks', JSON.stringify(pinnedBanks));
+            });
+        }
     });
 });
