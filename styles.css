@@ -49,24 +49,17 @@ header {
 
 .pinned-banks-container {
     display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
     justify-content: center;
-    gap: 10px;
     margin-top: 10px;
-    flex-wrap: wrap;
+    max-width: 100%;
 }
 
-.bank-buttons {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    justify-content: center; /* تصحيح لتوزيع الأزرار بشكل جيد */
-}
-
-.bank-button {
+.pinned-bank-button {
     background-color: white;
-    padding: 5px;
-    width: 100px; /* تصغير الأزرار */
-    height: 100px; /* تصغير الأزرار */
+    width: 100px;
+    height: 100px;
     text-align: center;
     border-radius: 5px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* إطار 3D */
@@ -78,6 +71,30 @@ header {
     flex-direction: column;
     align-items: center;
     justify-content: center; /* محاذاة المحتوى في المنتصف */
+}
+
+.bank-button {
+    background-color: white;
+    width: 100px;
+    height: 100px;
+    text-align: center;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* إطار 3D */
+    color: #007acc;
+    font-size: 0.8rem;
+    position: relative;
+    border: 2px solid #ccc; /* إطار رمادي بسيط */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; /* محاذاة المحتوى في المنتصف */
+}
+
+.bank-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center; /* تصحيح لتوزيع الأزرار بشكل جيد */
 }
 
 .icon-container {
@@ -119,16 +136,7 @@ header {
     color: #005f99;
 }
 
-.pinned-banks-container .bank-button {
-    width: 100px; /* تصغير الأزرار */
-    height: 100px; /* تصغير الأزرار */
-}
-
-.pinned-banks-container .pin-button {
-    display: none; /* إخفاء زر التثبيت في الأزرار المثبتة */
-}
-
-.pinned-banks-container .delete-button {
+.delete-button {
     position: absolute;
     top: 5px;
     right: 5px;
@@ -139,6 +147,15 @@ header {
     font-size: 0.8rem;
 }
 
-.pinned-banks-container .delete-button:hover {
+.delete-button:hover {
     color: #a00;
-    }
+}
+
+/* تحسين تناسق المربعات */
+.bank-button, .pinned-bank-button {
+    transition: all 0.3s ease;
+}
+
+.bank-button.pinned, .pinned-bank-button {
+    display: none;
+        }
