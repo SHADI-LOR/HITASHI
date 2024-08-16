@@ -52,37 +52,6 @@ header {
     margin-top: 10px;
 }
 
-.search-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 20px;
-    width: 100%;
-}
-
-#search-box {
-    padding: 10px;
-    width: 80%;
-    border: 1px solid #ddd;
-    border-radius: 5px 0 0 5px;
-    outline: none;
-}
-
-#search-button {
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 0 5px 5px 0;
-    background-color: #007acc;
-    color: white;
-    cursor: pointer;
-    outline: none;
-    font-size: 1rem;
-}
-
-#search-button:hover {
-    background-color: #005f99;
-}
-
 .bank-buttons {
     display: flex;
     justify-content: space-between;
@@ -94,7 +63,7 @@ header {
     background-color: white;
     padding: 10px;
     width: 100px;
-    height: 120px;
+    height: 150px;
     text-align: center;
     border-radius: 15px;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
@@ -103,15 +72,14 @@ header {
     position: relative;
 }
 
-.bank-button a {
-    text-decoration: none;
-    color: inherit;
-    display: block;
+.bank-button p {
+    margin: 10px 0;
 }
 
 .bank-button i {
     font-size: 2rem;
-    margin-bottom: 5px;
+    display: block;
+    margin: 0 auto;
 }
 
 .pin-button {
@@ -122,14 +90,33 @@ header {
     border: none;
     cursor: pointer;
     color: #007acc;
-    font-size: 1rem;
+    font-size: 0.8rem;
 }
 
 .pin-button:hover {
     color: #005f99;
 }
 
-.bank-button:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.3);
+.pinned-banks-container .bank-button {
+    width: 100px;
+    height: auto;
+}
+
+.pinned-banks-container .pin-button {
+    display: none;
+}
+
+.pinned-banks-container .delete-button {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #f00;
+    font-size: 0.8rem;
+}
+
+.pinned-banks-container .delete-button:hover {
+    color: #a00;
 }
