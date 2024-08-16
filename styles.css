@@ -56,43 +56,48 @@ header {
 
 .bank-buttons {
     display: flex;
-    justify-content: space-between;
-    gap: 10px;
     flex-wrap: wrap;
+    gap: 10px;
+    justify-content: space-between;
 }
 
 .bank-button {
     background-color: white;
     padding: 10px;
-    width: 100px;
-    height: 150px;
+    width: 120px;
+    height: 160px;
     text-align: center;
-    border-radius: 15px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     color: #007acc;
     font-size: 0.9rem;
     position: relative;
-}
-
-.bank-button p {
-    margin: 10px 0;
+    border: 2px solid #007acc; /* حدود ثابتة */
 }
 
 .icon-container {
-    margin: 10px auto;
+    margin-bottom: 10px;
 }
 
 .bank-icon {
     font-size: 2rem;
+}
+
+.bank-name {
+    margin: 5px 0 10px;
+}
+
+.button-link {
+    color: #007acc;
+    text-decoration: none;
     display: block;
-    margin: 0 auto;
 }
 
 .pin-button {
     position: absolute;
     top: 5px;
     right: 5px;
-    background-color: #d3d3d3; /* اللون الرمادي الفاتح */
+    background-color: transparent; /* حذف الخلفية */
     border: none;
     cursor: pointer;
     color: #007acc;
@@ -106,12 +111,11 @@ header {
 }
 
 .pin-button:hover {
-    background-color: #c0c0c0; /* لون رمادي أغمق عند التمرير */
     color: #005f99;
 }
 
 .pinned-banks-container .bank-button {
-    width: 100px;
+    width: 120px;
     height: auto;
 }
 
