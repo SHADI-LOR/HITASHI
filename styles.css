@@ -2,16 +2,37 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+}
+
+header {
+    text-align: center;
+    padding: 20px;
+    background-color: #f0f0f0;
+    border-bottom: 2px solid #ccc;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 24px;
 }
 
 header img {
     width: 100%;
-    max-height: 200px;
-    object-fit: cover;
+    max-width: 600px; /* تغيير الحجم بناءً على التصميم */
+    height: auto;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-top: 10px;
 }
 
 main {
     padding: 20px;
+}
+
+/* قسم قائمة المفضلات */
+#favorites-container {
+    margin-bottom: 20px;
 }
 
 /* قسم أزرار البنوك */
@@ -28,19 +49,16 @@ main {
     margin: 10px;
     padding: 10px;
     border: 1px solid #ddd;
-    border-radius: 10px;
+    border-radius: 8px;
     text-align: center;
     position: relative;
-    vertical-align: top;
 }
 
-/* أيقونات البنوك */
 .bank-card i {
     display: block;
     font-size: 24px;
 }
 
-/* روابط البنوك */
 .bank-card a {
     display: block;
     margin-top: 10px;
@@ -63,11 +81,7 @@ main {
     color: red;
 }
 
-/* قسم قائمة المفضلات */
-#favorites-container {
-    margin-top: 20px;
-}
-
+/* تصميم المفضلات */
 .favorite-bank {
     display: inline-block;
     width: 150px;
@@ -75,19 +89,6 @@ main {
     margin: 10px;
     padding: 10px;
     border: 1px solid #ddd;
-    border-radius: 10px;
+    border-radius: 8px;
     text-align: center;
-}
-
-.favorite-bank i {
-    display: block;
-    font-size: 24px;
-}
-
-.favorite-bank a {
-    display: block;
-    margin-top: 10px;
-    text-decoration: none;
-    color: #333;
-    font-size: 16px;
 }
