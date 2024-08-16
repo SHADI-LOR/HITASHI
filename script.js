@@ -10,11 +10,13 @@ document.addEventListener('DOMContentLoaded', () => {
         const bankButton = document.querySelector(`.bank-button[data-bank="${bank}"]`);
         if (bankButton) {
             const clonedButton = bankButton.cloneNode(true);
+            clonedButton.classList.add('pinned-bank-button'); // تأكد من إضافة الكلاس المطلوب
             clonedButton.querySelector('.pin-button').remove(); // إزالة زر التثبيت من النسخة المثبتة
             const deleteButton = document.createElement('button');
             deleteButton.textContent = '❌'; // رمز إزالة
             deleteButton.className = 'delete-button';
             clonedButton.appendChild(deleteButton);
+            clonedButton.setAttribute('data-bank', bank); // تأكيد اسم البنك المثبت
             pinnedBanksContainer.appendChild(clonedButton);
             bankButton.classList.add('pinned'); // إخفاء الزر الأصلي
         }
@@ -36,11 +38,13 @@ pinButtons.forEach(button => {
         // التحقق من عدم وجود زر مثبت بالفعل
         if (!pinnedBanksContainer.querySelector(`.pinned-bank-button[data-bank="${bankName}"]`)) {
             const clonedButton = bankButton.cloneNode(true);
+            clonedButton.classList.add('pinned-bank-button'); // تأكد من إضافة الكلاس المطلوب
             clonedButton.querySelector('.pin-button').remove(); // إزالة زر التثبيت من النسخة المثبتة
             const deleteButton = document.createElement('button');
             deleteButton.textContent = '❌'; // رمز إزالة
             deleteButton.className = 'delete-button';
             clonedButton.appendChild(deleteButton);
+            clonedButton.setAttribute('data-bank', bankName); // تأكيد اسم البنك المثبت
             pinnedBanksContainer.appendChild(clonedButton);
 
             // تخزين البيانات في التخزين المحلي
@@ -57,18 +61,20 @@ pinButtons.forEach(button => {
 // إزالة الأزرار المثبتة
 pinnedBanksContainer.addEventListener('click', (event) => {
     if (event.target.classList.contains('delete-button')) {
-        // إعادة زر التثبيت عند حذف الزر المثبت
         const bankButton = event.target.closest('.pinned-bank-button');
-        const originalButton = document.querySelector(`.bank-button[data-bank="${bankButton.getAttribute('data-bank')}"] .pin-button`);
+        const bankName = bankButton.getAttribute('data-bank');
+        
+        // إظهار الزر الأصلي
+        const originalButton = document.querySelector(`.bank-button[data-bank="${bankName}"]`);
         if (originalButton) {
-            originalButton.style.display = 'inline'; // إظهار زر التثبيت مرة أخرى
-            originalButton.closest('.bank-button').classList.remove('pinned'); // إظهار الزر الأصلي
+            originalButton.classList.remove('pinned'); // إعادة إظهار الزر الأصلي
         }
-        event.target.closest('.pinned-bank-button').remove(); // حذف الزر المثبت
+
+        // حذف الزر المثبت
+        bankButton.remove();
 
         // تحديث التخزين المحلي
         let pinnedBanks = JSON.parse(localStorage.getItem('pinnedBanks')) || [];
-        const bankName = bankButton.getAttribute('data-bank');
         pinnedBanks = pinnedBanks.filter(bank => bank !== bankName);
         localStorage.setItem('pinnedBanks', JSON.stringify(pinnedBanks));
     }
