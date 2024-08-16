@@ -28,6 +28,18 @@ header {
     position: relative;
 }
 
+.header-container {
+    position: relative;
+}
+
+.header-image {
+    width: 100%;
+    height: auto;
+    max-height: 150px;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
 .pinned-banks-container {
     display: flex;
     justify-content: space-around;
@@ -35,10 +47,42 @@ header {
     margin-top: 10px;
 }
 
+.search-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+#search-box {
+    padding: 10px;
+    width: 70%;
+    border: 1px solid #ddd;
+    border-radius: 5px 0 0 5px;
+    outline: none;
+}
+
+#search-button {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 0 5px 5px 0;
+    background-color: #007acc;
+    color: white;
+    cursor: pointer;
+    outline: none;
+    font-size: 1rem;
+}
+
+#search-button:hover {
+    background-color: #005f99;
+}
+
 .bank-buttons {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     gap: 10px;
+    flex-wrap: wrap;
 }
 
 .bank-button {
@@ -52,6 +96,12 @@ header {
     color: #007acc;
     font-size: 0.9rem;
     position: relative;
+}
+
+.bank-button a {
+    text-decoration: none;
+    color: inherit;
+    display: block;
 }
 
 .bank-button i {
