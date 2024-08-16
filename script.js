@@ -16,6 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
             deleteButton.className = 'delete-button';
             clonedButton.appendChild(deleteButton);
             pinnedBanksContainer.appendChild(clonedButton);
+            bankButton.classList.add('pinned'); // إخفاء الزر الأصلي
         }
     });
 });
@@ -27,13 +28,13 @@ pinButtons.forEach(button => {
         const bankName = bankButton.getAttribute('data-bank');
 
         // التحقق من عدد الأزرار المثبتة
-        if (pinnedBanksContainer.querySelectorAll('.bank-button').length >= maxPinnedBanks) {
+        if (pinnedBanksContainer.querySelectorAll('.pinned-bank-button').length >= maxPinnedBanks) {
             alert('يمكنك تثبيت حتى ثلاثة بنوك فقط.');
             return;
         }
 
         // التحقق من عدم وجود زر مثبت بالفعل
-        if (!pinnedBanksContainer.querySelector(`.bank-button[data-bank="${bankName}"]`)) {
+        if (!pinnedBanksContainer.querySelector(`.pinned-bank-button[data-bank="${bankName}"]`)) {
             const clonedButton = bankButton.cloneNode(true);
             clonedButton.querySelector('.pin-button').remove(); // إزالة زر التثبيت من النسخة المثبتة
             const deleteButton = document.createElement('button');
@@ -46,9 +47,10 @@ pinButtons.forEach(button => {
             let pinnedBanks = JSON.parse(localStorage.getItem('pinnedBanks')) || [];
             pinnedBanks.push(bankName);
             localStorage.setItem('pinnedBanks', JSON.stringify(pinnedBanks));
-        }
 
-        button.style.display = 'none'; // إخفاء زر التثبيت بعد التثبيت
+            // إخفاء الزر الأصلي
+            bankButton.classList.add('pinned');
+        }
     });
 });
 
@@ -56,12 +58,13 @@ pinButtons.forEach(button => {
 pinnedBanksContainer.addEventListener('click', (event) => {
     if (event.target.classList.contains('delete-button')) {
         // إعادة زر التثبيت عند حذف الزر المثبت
-        const bankButton = event.target.closest('.bank-button');
+        const bankButton = event.target.closest('.pinned-bank-button');
         const originalButton = document.querySelector(`.bank-button[data-bank="${bankButton.getAttribute('data-bank')}"] .pin-button`);
         if (originalButton) {
             originalButton.style.display = 'inline'; // إظهار زر التثبيت مرة أخرى
+            originalButton.closest('.bank-button').classList.remove('pinned'); // إظهار الزر الأصلي
         }
-        event.target.closest('.bank-button').remove(); // حذف الزر المثبت
+        event.target.closest('.pinned-bank-button').remove(); // حذف الزر المثبت
 
         // تحديث التخزين المحلي
         let pinnedBanks = JSON.parse(localStorage.getItem('pinnedBanks')) || [];
