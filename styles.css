@@ -38,6 +38,8 @@ header {
     object-fit: cover;
     border-radius: 10px;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    display: block;
+    margin: 0 auto;
 }
 
 .header-container h1 {
@@ -90,14 +92,21 @@ header {
     position: absolute;
     top: 5px;
     right: 5px;
-    background: none;
+    background-color: #d3d3d3; /* اللون الرمادي الفاتح */
     border: none;
     cursor: pointer;
     color: #007acc;
     font-size: 0.8rem;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .pin-button:hover {
+    background-color: #c0c0c0; /* لون رمادي أغمق عند التمرير */
     color: #005f99;
 }
 
