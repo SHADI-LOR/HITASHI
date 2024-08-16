@@ -11,6 +11,10 @@ document.addEventListener('DOMContentLoaded', () => {
         if (bankButton) {
             const clonedButton = bankButton.cloneNode(true);
             clonedButton.querySelector('.pin-button').remove(); // إزالة زر التثبيت من النسخة المثبتة
+            const deleteButton = document.createElement('button');
+            deleteButton.textContent = '❌'; // رمز إزالة
+            deleteButton.className = 'delete-button';
+            clonedButton.appendChild(deleteButton);
             pinnedBanksContainer.appendChild(clonedButton);
         }
     });
@@ -32,6 +36,10 @@ pinButtons.forEach(button => {
         if (!pinnedBanksContainer.querySelector(`.bank-button[data-bank="${bankName}"]`)) {
             const clonedButton = bankButton.cloneNode(true);
             clonedButton.querySelector('.pin-button').remove(); // إزالة زر التثبيت من النسخة المثبتة
+            const deleteButton = document.createElement('button');
+            deleteButton.textContent = '❌'; // رمز إزالة
+            deleteButton.className = 'delete-button';
+            clonedButton.appendChild(deleteButton);
             pinnedBanksContainer.appendChild(clonedButton);
 
             // تخزين البيانات في التخزين المحلي
