@@ -1,60 +1,32 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const pins = document.querySelectorAll('.pin-button');
-    const pinnedBanksContainer = document.getElementById('pinned-banks');
+// أزرار التثبيت
+const pinButtons = document.querySelectorAll('.pin-button');
+const pinnedBanksContainer = document.getElementById('pinned-banks');
+const maxPinnedBanks = 3;
 
-    pins.forEach(pin => {
-        pin.addEventListener('click', (event) => {
-            const bankButton = event.currentTarget.closest('.bank-button');
-            const bankName = bankButton.dataset.bank;
+// إضافة أحداث التثبيت
+pinButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        const bankButton = button.closest('.bank-button');
+        const bankName = bankButton.getAttribute('data-bank');
 
-            // تحقق من عدم تجاوز الحد الأقصى لعدد التثبيتات
-            if (pinnedBanksContainer.children.length < 2) {
-                const pinnedButton = bankButton.cloneNode(true);
-                pinnedButton.querySelector('.pin-button').remove();
-                pinnedButton.classList.add('pinned');
-                const deleteButton = document.createElement('button');
-                deleteButton.className = 'delete-button';
-                deleteButton.innerHTML = '<i class="fas fa-times"></i>';
-                pinnedButton.appendChild(deleteButton);
-                pinnedBanksContainer.appendChild(pinnedButton);
-                
-                deleteButton.addEventListener('click', () => {
-                    pinnedBanksContainer.removeChild(pinnedButton);
-                });
-
-                // تخزين التثبيت في localStorage
-                let pinnedBanks = JSON.parse(localStorage.getItem('pinnedBanks')) || [];
-                if (!pinnedBanks.includes(bankName)) {
-                    pinnedBanks.push(bankName);
-                    localStorage.setItem('pinnedBanks', JSON.stringify(pinnedBanks));
-                }
-            } else {
-                alert('يمكنك تثبيت ما يصل إلى زرين فقط.');
-            }
-        });
-    });
-
-    // تحميل التثبيتات المحفوظة عند تحميل الصفحة
-    const savedBanks = JSON.parse(localStorage.getItem('pinnedBanks')) || [];
-    savedBanks.forEach(bankName => {
-        const bankButton = Array.from(document.querySelectorAll('.bank-button')).find(button => button.dataset.bank === bankName);
-        if (bankButton) {
-            const pinnedButton = bankButton.cloneNode(true);
-            pinnedButton.querySelector('.pin-button').remove();
-            pinnedButton.classList.add('pinned');
-            const deleteButton = document.createElement('button');
-            deleteButton.className = 'delete-button';
-            deleteButton.innerHTML = '<i class="fas fa-times"></i>';
-            pinnedButton.appendChild(deleteButton);
-            pinnedBanksContainer.appendChild(pinnedButton);
-
-            deleteButton.addEventListener('click', () => {
-                pinnedBanksContainer.removeChild(pinnedButton);
-                // إزالة التثبيت من localStorage
-                let pinnedBanks = JSON.parse(localStorage.getItem('pinnedBanks')) || [];
-                pinnedBanks = pinnedBanks.filter(bank => bank !== bankName);
-                localStorage.setItem('pinnedBanks', JSON.stringify(pinnedBanks));
-            });
+        if (pinnedBanksContainer.querySelectorAll('.bank-button').length >= maxPinnedBanks) {
+            alert('يمكنك تثبيت حتى ثلاثة بنوك فقط.');
+            return;
         }
+
+        if (!pinnedBanksContainer.querySelector(`.bank-button[data-bank="${bankName}"]`)) {
+            const clonedButton = bankButton.cloneNode(true);
+            clonedButton.querySelector('.pin-button').remove(); // إزالة زر التثبيت من النسخة المثبتة
+            pinnedBanksContainer.appendChild(clonedButton);
+        }
+
+        button.style.display = 'none'; // إخفاء زر التثبيت بعد التثبيت
     });
+});
+
+// إزالة الأزرار المثبتة
+pinnedBanksContainer.addEventListener('click', (event) => {
+    if (event.target.classList.contains('delete-button')) {
+        event.target.closest('.bank-button').remove();
+    }
 });
