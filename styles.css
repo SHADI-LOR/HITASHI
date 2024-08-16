@@ -1,161 +1,122 @@
-/* المظهر العام */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
+/* تنسيقات عامة للصفحة */
 body {
     font-family: Arial, sans-serif;
-    background-color: #f0f8ff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    min-height: 100vh;
-    padding: 20px;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+    text-align: center;
 }
 
 header {
-    background-color: white;
-    padding: 20px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-    border-radius: 15px;
+    background-color: #007BFF;
+    padding: 10px 0;
+    color: white;
+    position: sticky;
+    top: 0;
     width: 100%;
-    max-width: 350px;
-    text-align: center;
-    margin-bottom: 10px;
-    position: relative;
 }
 
-.header-container {
-    position: relative;
+.header-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.header-image {
+.logo {
     width: 300px;
     height: 300px;
     object-fit: cover;
-    border-radius: 10px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-    display: block;
-    margin: 0 auto;
 }
 
-.header-container h1 {
+h1 {
+    font-size: 2em;
     margin-top: 10px;
-    font-size: 1.5rem;
 }
 
-.pinned-banks-container {
+/* تنسيق المربعات الخاصة بالبنوك */
+.buttons-container {
     display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
     justify-content: center;
-    margin-top: 10px;
-    max-width: 100%;
-}
-
-.pinned-bank-button {
-    background-color: white;
-    width: 100px;
-    height: 100px;
-    text-align: center;
-    border-radius: 5px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* إطار 3D */
-    color: #007acc;
-    font-size: 0.8rem;
-    position: relative;
-    border: 2px solid #ccc; /* إطار رمادي بسيط */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center; /* محاذاة المحتوى في المنتصف */
+    gap: 20px;
+    margin: 20px;
 }
 
 .bank-button {
-    background-color: white;
-    width: 100px;
-    height: 100px;
-    text-align: center;
-    border-radius: 5px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* إطار 3D */
-    color: #007acc;
-    font-size: 0.8rem;
+    width: 150px;
+    height: 150px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border: 3px solid #ddd;
     position: relative;
-    border: 2px solid #ccc; /* إطار رمادي بسيط */
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center; /* محاذاة المحتوى في المنتصف */
-}
-
-.bank-buttons {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    justify-content: center; /* تصحيح لتوزيع الأزرار بشكل جيد */
-}
-
-.icon-container {
-    margin-bottom: 5px;
-}
-
-.bank-icon {
-    font-size: 1.5rem; /* تصغير حجم الأيقونات */
-}
-
-.bank-name {
-    margin: 5px 0;
-}
-
-.button-link {
-    color: #007acc;
-    text-decoration: none;
-    display: block;
-}
-
-.pin-button {
-    position: absolute;
-    top: 5px;
-    right: 5px;
-    background-color: transparent; /* حذف الخلفية */
-    border: none;
-    cursor: pointer;
-    color: #007acc;
-    font-size: 0.8rem;
-    border-radius: 50%;
-    width: 24px; /* تصغير الزر */
-    height: 24px; /* تصغير الزر */
-    display: flex;
-    align-items: center;
     justify-content: center;
+    transition: transform 0.2s, box-shadow 0.2s;
 }
 
-.pin-button:hover {
-    color: #005f99;
+.bank-button:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
-.delete-button {
-    position: absolute;
-    top: 5px;
-    right: 5px;
-    background: none;
+.bank-button p {
+    margin-top: 10px;
+    font-size: 1.2em;
+}
+
+/* تنسيق الأيقونة في داخل المربعات */
+.icon {
+    width: 50px;
+    height: 50px;
+    background-color: #007BFF;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+/* تنسيق زر المفضلة */
+.favorite-btn {
+    background-color: #ccc;
     border: none;
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
     cursor: pointer;
-    color: #f00;
-    font-size: 0.8rem;
+    padding: 5px;
+    font-size: 16px;
+    border-radius: 50%;
+    transition: background-color 0.2s;
 }
 
-.delete-button:hover {
-    color: #a00;
+.favorite-btn.active {
+    background-color: #007BFF;
+    color: white;
 }
 
-/* تحسين تناسق المربعات */
-.bank-button, .pinned-bank-button {
-    transition: all 0.3s ease;
+.favorite-btn i {
+    font-size: 18px;
 }
 
-.bank-button.pinned, .pinned-bank-button {
-    display: none;
-        }
+/* تنسيق المفضلة */
+.favorites-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin: 20px;
+}
+
+.favorites-container .bank-button {
+    width: 150px;
+    height: 150px;
+    position: relative;
+}
+
+.favorites-container .bank-button .icon {
+    margin-bottom: 0;
+}
+
+/* إطار 3D للأزرار */
+.bank-button {
+    box-shadow: 5px 5px 10px #ccc, -5px -5px 10px #fff;
+    }
