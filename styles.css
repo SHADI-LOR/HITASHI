@@ -1,99 +1,197 @@
 body {
-    font-family: Arial, sans-serif;
     margin: 0;
-    padding: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+}
+
+.header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2); /* إطار 3D */
+    position: relative;
+    margin-bottom: 30px; /* المسافة بين مربع البحث والأزرار */
+}
+
+.header h1 {
+    margin: 10px 0;
+    font-size: 24px;
+    color: #333;
+}
+
+.logo {
+    width: 250px;
+    height: 250px;
+    border-radius: 20px;
+}
+
+.search-box {
+    display: flex;
+    align-items: center;
+    background-color: #ffffff;
+    padding: 5px;
+    border-radius: 15px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1); /* إطار 3D للمربع */
+    width: 100%;
+    max-width: 500px;
+    border: 2px solid #007BFF;
+    margin-top: 20px;
+}
+
+.search-input {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 10px 0 0 10px;
+    font-size: 16px;
+    box-shadow: inset 0px 2px 5px rgba(0, 0, 0, 0.1);
+    margin-right: -1px;
     box-sizing: border-box;
 }
 
-header {
-    text-align: center;
-    padding: 20px;
-    background-color: #f0f0f0;
-    border-bottom: 2px solid #ccc;
+.search-input:focus {
+    outline: none;
+    box-shadow: inset 0px 2px 10px rgba(0, 0, 0, 0.2);
 }
 
-header h1 {
-    margin: 0;
-    font-size: 24px;
+.search-button {
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 0 10px 10px 0;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, box-shadow 0.3s;
 }
 
-header img {
-    width: 100%;
-    max-width: 600px; /* تغيير الحجم بناءً على التصميم */
-    height: auto;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    margin-top: 10px;
+.search-button:hover {
+    background-color: #0056b3;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
 }
 
-main {
-    padding: 20px;
-}
-
-/* قسم قائمة المفضلات */
-#favorites-container {
-    margin-bottom: 20px;
+.button-container {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: row;
     justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
 }
 
-/* قسم أزرار البنوك */
-#bank-buttons {
+.icon-button {
     display: flex;
-    flex-wrap: wrap;
+    align-items: center;
     justify-content: center;
-}
-
-.bank-card {
-    display: inline-block;
-    width: 150px;
-    height: 100px;
-    margin: 10px;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    text-align: center;
-    position: relative;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.bank-card i {
-    display: block;
-    font-size: 24px;
-}
-
-.bank-card a {
-    display: block;
-    margin-top: 10px;
+    padding: 8px 15px;
+    background-color: #007BFF;
+    color: white;
     text-decoration: none;
-    color: #333;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    font-size: 14px;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.icon-button i {
+    margin-right: 8px;
+}
+
+.icon-button:hover {
+    background-color: #0056b3;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.favorite-button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    color: #FF6347;
+}
+
+.favorite-button.selected {
+    color: #FFD700;
+}
+
+.favorites-list {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.favorite-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
     font-size: 16px;
 }
 
-/* أيقونة القلب */
-.heart-icon {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    font-size: 20px;
-    color: gray;
+.remove-favorite-button {
+    padding: 5px 10px;
+    background-color: #ff6b6b;
+    color: white;
+    border: none;
+    border-radius: 5px;
     cursor: pointer;
+    transition: background-color 0.3s;
 }
 
-.heart-icon.active {
-    color: red;
+.remove-favorite-button:hover {
+    background-color: #ff4c4c;
 }
 
-/* تصميم المفضلات */
-.favorite-bank {
-    display: inline-block;
-    width: 150px;
-    height: 100px;
-    margin: 10px;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    text-align: center;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .logo {
+        margin-bottom: 10px;
+    }
+
+    .search-box {
+        flex-direction: column;
+    }
+
+    .search-input {
+        width: 100%;
+        border-radius: 10px;
+        margin-bottom: 10px;
+    }
+
+    .search-button {
+        width: 100%;
+        border-radius: 10px;
+    }
+
+    .button-container {
+        flex-direction: row;
+        gap: 10px;
+    }
+
+    .icon-button {
+        width: auto;
+        text-align: center;
+    }
 }
