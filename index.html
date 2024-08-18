@@ -1,46 +1,56 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HITASHI BANK</title>
     <link rel="stylesheet" href="styles.css">
-    <!-- تضمين مكتبة الأيقونات Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-1xF1vF7W62waML2IFC4RF7V/JM39kS5Vq7Osq+JpjFvV5/zzVP5fI8Hw4d9p7Vj1xVR9NCUOEmfGvx7vjA7b6g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <header>
-        <h1>HITASHI BANK</h1>
-        <img src="https://i.ibb.co/Nr4Hk8q/98cc95b8102b05de6c4eed6f67d80f0c.jpg" alt="HITASHI BANK">
-    </header>
-    <main>
-        <!-- قسم قائمة المفضلات -->
-        <section id="favorites-container"></section>
-
-        <!-- قسم أزرار البنوك -->
-        <section id="bank-buttons">
-            <!-- بطاقة بنك باليريون -->
-            <div class="bank-card" data-id="1">
-                <i class="heart-icon fas fa-heart"></i>
-                <i class="fas fa-university"></i>
-                <a href="Ballerion.html">باليريون</a>
+    <div class="container">
+        <div class="header">
+            <img src="https://i.ibb.co/Nr4Hk8q/98cc95b8102b05de6c4eed6f67d80f0c.jpg" alt="Bank Logo" class="logo">
+            <h1>HITASHI BANK</h1>
+            
+            <div class="search-box">
+                <input type="text" id="search-input" class="search-input" placeholder="ابحث عن نقابتك...">
+                <button id="search-button" class="search-button">بحث</button>
             </div>
+        </div>
 
-            <!-- بطاقة بنك سوينيوس -->
-            <div class="bank-card" data-id="2">
-                <i class="heart-icon fas fa-heart"></i>
-                <i class="fas fa-university"></i>
-                <a href="Souenis.html">سوينيوس</a>
-            </div>
+        <!-- قائمة المفضلات -->
+        <div id="favorites" class="favorites-container">
+            <h2>المفضلة</h2>
+            <div id="favorites-list"></div>
+        </div>
 
-            <!-- بطاقة بنك أدلر -->
-            <div class="bank-card" data-id="3">
-                <i class="heart-icon fas fa-heart"></i>
-                <i class="fas fa-university"></i>
-                <a href="Adler.html">أدلر</a>
+        <!-- الأزرار مع الأيقونات -->
+        <div class="button-container">
+            <div class="button-wrapper">
+                <button class="favorite-button" data-id="ballerion"><i class="fas fa-star"></i></button>
+                <a href="Ballerion.html" id="button-ballerion" class="icon-button">
+                    <i class="fas fa-bank"></i>
+                    باليريون
+                </a>
             </div>
-        </section>
-    </main>
+            <div class="button-wrapper">
+                <button class="favorite-button" data-id="souenis"><i class="fas fa-star"></i></button>
+                <a href="Souenis.html" id="button-souenis" class="icon-button">
+                    <i class="fas fa-bank"></i>
+                    سوينيوس
+                </a>
+            </div>
+            <div class="button-wrapper">
+                <button class="favorite-button" data-id="adler"><i class="fas fa-star"></i></button>
+                <a href="Adler.html" id="button-adler" class="icon-button">
+                    <i class="fas fa-bank"></i>
+                    أدلر
+                </a>
+            </div>
+        </div>
+    </div>
+
     <script src="script.js"></script>
 </body>
 </html>
