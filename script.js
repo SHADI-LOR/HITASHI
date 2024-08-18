@@ -19,8 +19,12 @@ document.addEventListener("DOMContentLoaded", function() {
                 removeFavorite(buttonText);
             } else {
                 if (favoritesList.childElementCount < 2) {
-                    this.classList.add("selected");
-                    addFavorite(buttonText, buttonLink);
+                    if (!isFavoriteAlreadyAdded(buttonText)) {  // تحقق من عدم وجود العنصر بالفعل في المفضلة
+                        this.classList.add("selected");
+                        addFavorite(buttonText, buttonLink);
+                    } else {
+                        alert("هذا العنصر موجود بالفعل في المفضلة.");
+                    }
                 } else {
                     alert("يمكنك إضافة زرين فقط إلى المفضلة.");
                 }
@@ -70,5 +74,10 @@ document.addEventListener("DOMContentLoaded", function() {
         let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
         favorites = favorites.filter(favorite => favorite.text !== text);
         localStorage.setItem("favorites", JSON.stringify(favorites));
+    }
+
+    function isFavoriteAlreadyAdded(text) {
+        const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+        return favorites.some(favorite => favorite.text === text);
     }
 });
